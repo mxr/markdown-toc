@@ -59,6 +59,8 @@ Usage: markdown-toc [options] <input>
 
   --no-stripHeadingTags: Do not strip extraneous HTML tags from heading
                          text before slugifying
+
+  --version:    Print the version and exit
 ```
 
 ## Highlights
