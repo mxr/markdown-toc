@@ -4,13 +4,19 @@ var fs = require('fs');
 var toc = require('./index.js');
 var utils = require('./lib/utils');
 var args = utils.minimist(process.argv.slice(2), {
-  boolean: ['i', 'json', 'firsth1', 'stripHeadingTags'],
+  boolean: ['i', 'json', 'firsth1', 'stripHeadingTags', 'version'],
   string: ['append', 'bullets', 'indent'],
   default: {
     firsth1: true,
     stripHeadingTags: true
   }
 });
+
+if (args.version) {
+  import {version} from './package.json';
+  console.log(version);
+  process.exit(0);
+}
 
 if (args._.length !== 1) {
   console.error([
@@ -39,7 +45,9 @@ if (args._.length !== 1) {
     '                         text before slugifying',
     '',  
     '  --indent:     Provide the indentation to use - defaults to \'  \'',
-    '                (to specify a tab, use the bash-escaped $\'\\t\')'
+    '                (to specify a tab, use the bash-escaped $\'\\t\')',
+    '',
+    '  --version:    Print the version and exit',
   ].join('\n'));
   process.exit(1);
 }
