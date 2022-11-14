@@ -13,8 +13,7 @@ var args = utils.minimist(process.argv.slice(2), {
 });
 
 if (args.version) {
-  import {version} from './package.json';
-  console.log(version);
+  console.log(process.env.npm_package_version);
   process.exit(0);
 }
 
